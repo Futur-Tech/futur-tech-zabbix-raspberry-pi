@@ -21,7 +21,7 @@ Triggers:
 - CPU is throttling
 
 Installation:
-1. Copy [userparameter_rpi.conf](https://gitlab.com/Qrl/zabbix/blob/master/scripts/userparameter_rpi.conf) to `/etc/zabbix/zabbix_agentd.d/` on rpi
+1. Copy userparameter_rpi.conf to `/etc/zabbix/zabbix_agentd.d/` on rpi
 3. Add zabbix user to video group on rpi `$ sudo usermod -a -G video zabbix`
 4. Restart the zabbix agent on rpi `$ sudo service zabbix-agent restart`
-5. Import [zbx_template_rpi.xml](https://gitlab.com/Qrl/zabbix/blob/master/zbx_template_rpi.xml) to templates in Zabbix Server
+5. Import zbx_template_rpi.xml to templates in Zabbix Server
