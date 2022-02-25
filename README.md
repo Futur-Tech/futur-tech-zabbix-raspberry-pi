@@ -1,11 +1,5 @@
 Original Git: https://gitlab.com/Qrl/zabbix
 
-## Zabbix Templates
-
-- Raspberry Pi CPU: [zbx_template_rpi.xml](https://gitlab.com/Qrl/zabbix/blob/master/zbx_template_rpi.xml)
-
----
-
 ### Raspberry Pi CPU Template
 
 Items:
@@ -20,8 +14,22 @@ Triggers:
 - CPU temperature is high(<70C)
 - CPU is throttling
 
-Installation:
-1. Copy userparameter_rpi.conf to `/etc/zabbix/zabbix_agentd.d/` on rpi
-3. Add zabbix user to video group on rpi `$ sudo usermod -a -G video zabbix`
-4. Restart the zabbix agent on rpi `$ sudo service zabbix-agent restart`
-5. Import zbx_template_rpi.xml to templates in Zabbix Server
+Works for Zabbix 5.x Active Agent
+
+## Deploy Commands
+
+Everything is executed by only a few basic deploy scripts. 
+
+```bash
+cd /usr/local/src
+git clone https://github.com/Futur-Tech/futur-tech-zabbix-postfix.git
+cd futur-tech-zabbix-postfix
+
+./deploy.sh 
+# Main deploy script
+
+./deploy-update.sh -b main
+# This script will automatically pull the latest version of the branch ("main" in the example) and relaunch itself if a new version is found. Then it will run deploy.sh. Also note that any additional arguments given to this script will be passed to the deploy.sh script.
+```
+
+Finally import the template XML in Zabbix Server and attach it to your host.
