@@ -9,6 +9,8 @@ Items:
 - CPU throttling
 - SD Card R/W test (with package "agnostics")
 
+SD Card test is done once a week on Sunday at 4AM in order to avoid wear.
+
 Triggers:
 - CPU temperature is high(<70C)
 - CPU is throttling
