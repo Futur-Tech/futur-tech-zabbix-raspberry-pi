@@ -21,8 +21,8 @@ Everything is executed by only a few basic deploy scripts.
 
 ```bash
 cd /usr/local/src
-git clone https://github.com/Futur-Tech/futur-tech-zabbix-postfix.git
-cd futur-tech-zabbix-postfix
+git clone https://github.com/Futur-Tech/futur-tech-zabbix-raspberry-pi.git
+cd futur-tech-zabbix-raspberry-pi
 
 ./deploy.sh 
 # Main deploy script
