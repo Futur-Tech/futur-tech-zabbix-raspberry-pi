@@ -1,14 +1,13 @@
 Original Git: https://gitlab.com/Qrl/zabbix
 
-### Raspberry Pi CPU Template
+### Raspberry Pi Template
 
 Items:
 - CPU clock
 - CPU voltage
 - CPU temperature (Celsius)
 - CPU throttling
-
-CPU items interval: 1m
+- SD Card R/W test (with package "agnostics")
 
 Triggers:
 - CPU temperature is high(<70C)
