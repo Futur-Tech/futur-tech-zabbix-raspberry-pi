@@ -15,7 +15,7 @@ Triggers:
 - CPU temperature is high(<70C)
 - CPU is throttling
 
-Works for Zabbix 5.x Active Agent
+Works for Zabbix 6.0 Active Agent
 
 ## Deploy Commands
 
@@ -33,4 +33,4 @@ cd futur-tech-zabbix-raspberry-pi
 # This script will automatically pull the latest version of the branch ("main" in the example) and relaunch itself if a new version is found. Then it will run deploy.sh. Also note that any additional arguments given to this script will be passed to the deploy.sh script.
 ```
 
-Finally import the template XML in Zabbix Server and attach it to your host.
+Finally import the template YAML in Zabbix Server and attach it to your host.

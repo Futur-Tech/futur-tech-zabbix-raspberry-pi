@@ -1,0 +1,332 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-08-03T11:47:33Z'
+  groups:
+    - uuid: 22fefe9c6af648aea42d4e8522fd123a
+      name: 'Templates/Futur-Tech/Modules Linux'
+  templates:
+    - uuid: 9450b70c53694abfaea7853c1af9080f
+      template: 'Futur-Tech Module Linux Raspberry Pi'
+      name: 'Futur-Tech Module Linux Raspberry Pi'
+      description: 'https://github.com/Futur-Tech/futur-tech-zabbix-raspberry-pi'
+      groups:
+        - name: 'Templates/Futur-Tech/Modules Linux'
+      items:
+        - uuid: f49498ee890f4aa6ab560f8cc655258a
+          name: 'SD card test run 1 random read speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-read[1]'
+          delay: '0'
+          units: '!r/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-read;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[0].3'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: 97821db8fab0489781b4f03bd8b32999
+          name: 'SD card test run 2 random read speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-read[2]'
+          delay: '0'
+          units: '!r/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-read;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[1].3'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: 2eb20c941992424685e634f6067fe5a8
+          name: 'SD card test run 3 random read speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-read[3]'
+          delay: '0'
+          units: '!r/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-read;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[2].3'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: 9580cb1889f94bf7b1ecd2b3c78831c7
+          name: 'SD card test run 1 random write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-write[1]'
+          delay: '0'
+          units: '!w/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[0].5'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: d38afa8bfb374edaada3f37ce14d5d89
+          name: 'SD card test run 2 random write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-write[2]'
+          delay: '0'
+          units: '!w/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[1].5'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: eb5e4118090d40738ee0f39b6e4c296f
+          name: 'SD card test run 3 random write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.rand-4k-write[3]'
+          delay: '0'
+          units: '!w/s'
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^rand-4k-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[2].5'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: d14ca2f24b7842bb913c98fa9bf62814
+          name: 'SD card test run 1 sequential write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.seq-write[1]'
+          delay: '0'
+          units: Bps
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^seq-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[0].4'
+            - type: MULTIPLIER
+              parameters:
+                - '1024'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: 0e710a59cc5e493f8902df4125097f91
+          name: 'SD card test run 2 sequential write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.seq-write[2]'
+          delay: '0'
+          units: Bps
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^seq-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[1].4'
+            - type: MULTIPLIER
+              parameters:
+                - '1024'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: 1c5799df6c784283ab00c54d870f8802
+          name: 'SD card test run 3 sequential write speed'
+          type: DEPENDENT
+          key: 'rpi.agnostics.seq-write[3]'
+          delay: '0'
+          units: Bps
+          preprocessing:
+            - type: JAVASCRIPT
+              parameters:
+                - 'return value.match(/^seq-write;.*$/gm).join(''\r\n'');'
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - ''
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$.[2].4'
+            - type: MULTIPLIER
+              parameters:
+                - '1024'
+          master_item:
+            key: 'vfs.file.contents[/tmp/sdtest]'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: e59d7b81e4c2441b98de03da1d12167f
+          name: 'CPU clock (MHz)'
+          type: ZABBIX_ACTIVE
+          key: rpi.cpuClock
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.000001'
+          tags:
+            - tag: Application
+              value: CPU
+        - uuid: b5910f2a18be4794819d6890864c3c88
+          name: 'CPU temperature'
+          type: ZABBIX_ACTIVE
+          key: rpi.cpuTemperature
+          units: °C
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.001'
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: ee05b878942e41f09d5c6c23626fcf21
+              expression: 'last(/Futur-Tech Module Linux Raspberry Pi/rpi.cpuTemperature)>=70'
+              name: 'CPU temperature is high'
+              priority: WARNING
+        - uuid: 2a55003060e743688cd047067a399804
+          name: 'CPU throttled'
+          type: ZABBIX_ACTIVE
+          key: rpi.cpuThrottled
+          trends: '0'
+          value_type: TEXT
+          tags:
+            - tag: Application
+              value: CPU
+          triggers:
+            - uuid: 4c0dc80040204f37b58664e83090b297
+              expression: 'find(/Futur-Tech Module Linux Raspberry Pi/rpi.cpuThrottled,,"iregexp","\b(0x0)\b")=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'find(/Futur-Tech Module Linux Raspberry Pi/rpi.cpuThrottled,,"iregexp","\b(0x0)\b")=1'
+              name: 'CPU is throttling'
+              priority: WARNING
+        - uuid: 21be1f2521c443e988937eefe767bf6d
+          name: 'CPU voltage'
+          type: ZABBIX_ACTIVE
+          key: rpi.cpuVoltage
+          value_type: FLOAT
+          tags:
+            - tag: Application
+              value: CPU
+        - uuid: a041262a9e334f1dbbee20adf01b09e8
+          name: 'SD card run Agnostics'
+          type: ZABBIX_ACTIVE
+          key: 'system.run[sh /usr/share/agnostics/sdtest.sh > /tmp/sdtest_tmp ; mv -f /tmp/sdtest_tmp /tmp/sdtest, nowait]'
+          delay: 1d;wd7h4
+          trends: '0'
+          value_type: TEXT
+          description: 'This will run a test on your Raspberry Pi SD Card. It will be only done on Sunday at 4AM in order to avoid wear.'
+          tags:
+            - tag: Application
+              value: 'SD card'
+        - uuid: d97c15d0526a427ca430b90a7d7740c3
+          name: 'SD card test results'
+          type: ZABBIX_ACTIVE
+          key: 'vfs.file.contents[/tmp/sdtest]'
+          delay: 20m
+          trends: '0'
+          value_type: TEXT
+          preprocessing:
+            - type: DISCARD_UNCHANGED_HEARTBEAT
+              parameters:
+                - 1d
+          tags:
+            - tag: Application
+              value: 'SD card'
+          triggers:
+            - uuid: a097ad56f93e4995b8aeaa20b9736b64
+              expression: 'nodata(/Futur-Tech Module Linux Raspberry Pi/vfs.file.contents[/tmp/sdtest],14d)=1'
+              name: 'No SD card test run for more than 14d'
+              priority: WARNING
+            - uuid: 776f8ced38124b0a85e3bbb7faf967e4
+              expression: '((find(/Futur-Tech Module Linux Raspberry Pi/vfs.file.contents[/tmp/sdtest],,"regexp","- FAIL"))<>0)'
+              name: 'SD card test did not pass recommended performances'
+              url: 'https://www.raspberrypi.com/news/sd-card-speed-test/'
+              priority: AVERAGE
+              description: 'The test results from agnostics failed to meet recommended performances by Raspberry Pi team.'
+      tags:
+        - tag: Futur-Tech
+      macros:
+        - macro: '{$SYSTEMD.NAME.SERVICE.NOT_MATCHES}'
+          value: rsync.service|sshswitch.service||raspberrypi-net-mods.service
+  graphs:
+    - uuid: 1d4200151220434882e502c8370de402
+      name: 'CPU Temp'
+      graph_items:
+        - sortorder: '1'
+          color: B71C1C
+          item:
+            host: 'Futur-Tech Module Linux Raspberry Pi'
+            key: rpi.cpuTemperature
